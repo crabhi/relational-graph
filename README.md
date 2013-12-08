@@ -57,3 +57,21 @@ Graph graph = new SQLRGraph.Builder().connection(jdbcConn) // only mandatory thi
 ```
 
 ~~This graph now contains all the information about the database.~~
+
+## Mapping
+
+All the properties which are added by Relational Graph and not coming
+from the user data are surrounded by underscores. Those which are intended
+to be consumed by the API user use single underscore. The double underscores
+are reserved.
+
+The row vertices will contain a property &#95;type&#95;, whose value is
+the schema-qualified name of the table.
+
+If there is a DB column named e. g. &#95;type&#95;, the row vertices will
+have this property prefixed as &#95;col&#95;type&#95;.
+
+## Limitations
+
+Only tables which have a unique identifier for the rows ~~(may be composed
+from multiple columns)~~ are supported.
